@@ -1,6 +1,33 @@
-.App {
-  font-family: sans-serif;
-  text-align: center;
+/*  LAYOUT  ***************************/
+.userInputHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading .spinner-container {
+  margin: 20px 0 0 0;
+}
+
+button {
+  background-color: #eee;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #eee;
+}
+
+button:active {
+  background-color: #efe;
+  transform: scale(1.1, 1.1);
 }
 
 ul {
@@ -14,18 +41,103 @@ ul li {
   padding: 0;
 }
 
-ul .quotes {
-  background-image: url("../public/img/Curly_Brackets.svg");
+ul.quotes {
+  margin: 0 4%;
+  text-align: center;
 }
 
-.loading {
-  color: #aaa;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+ul.quotes .quote {
+  margin: 30px 0;
 }
 
+ul.quotes li p {
+  margin: 0;
+}
+
+/* STYLE  *****************************/
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+button.retrieveQuotes,
+button.viewFavorites {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.loading,
 .loading .spinner-container {
-  margin: 20px 0 0 0;
   color: #aaa;
+}
+
+.quote .author,
+button.addToFavorites {
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+}
+
+.quote .author {
+  padding-right: 10px;
+  border-right: 1px solid #aaa;
+}
+
+button.addToFavorites {
+  display: inline;
+  background: none;
+}
+
+button.addToFavorites:hover {
+  cursor: pointer;
+  background-color: #eee;
+}
+
+button.addToFavorites:active {
+  background-color: #efe;
+}
+
+.quote-phrase-0,
+.quote-phrase-1,
+.quote-phrase-2,
+.quote-phrase-3,
+.quote-phrase-4,
+.quote-phrase-5,
+.quote-phrase-6,
+.quote-phrase-7 {
+  font-size: 2em;
+  margin: 0;
+  padding: 0;
+}
+
+.quote-phrase-0 {
+  font-family: "PT Serif", serif;
+}
+
+.quote-phrase-1 {
+  font-family: "Cookie", cursive;
+}
+
+.quote-phrase-2 {
+  font-family: "Sacramento", cursive;
+}
+
+.quote-phrase-3 {
+  font-family: "Tangerine", cursive;
+}
+
+.quote-phrase-4 {
+  font-family: "Marck Script", cursive;
+}
+
+.quote-phrase-5 {
+  font-family: "Yellowtail", cursive;
+}
+
+.quote-phrase-6 {
+  font-family: "Italianno", cursive;
+}
+
+.quote-phrase-7 {
+  font-family: "Covered By Your Grace", cursive;
 }

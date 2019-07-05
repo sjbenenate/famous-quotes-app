@@ -1,24 +1,32 @@
 import React from "react";
 import QuoteList from "./QuoteList.js";
-var Spinner = require("react-spinkit");
+import UserInput from "./UserInput.js";
+import staticData from "./staticData.js";
 
 const APIurl = "https://andruxnet-random-famous-quotes.p.rapidapi.com/";
 const APIhost = "andruxnet-random-famous-quotes.p.rapidapi.com";
 const APIkey = "7fcae583e6mshfb0a40746534038p145d17jsn4d0f57a7e898";
 const APIoptions = "?cat=famous&count=5";
 
+const useStaticData = false;
+var handleClick = () => {
+  console.log("handling click...");
+};
+
 class App extends React.Component {
-  state = { quotes: [], isLoading: false };
+  state = { quotes: [], isLoading: true };
 
   componentDidMount() {
-    this.fetchQuotes();
-    console.log(this.state.quotes);
+    if (!useStaticData) {
+      this.fetchQuotes();
+    } else {
+      this.setState({ quotes: staticData, isLoading: false });
+    }
   }
 
   fetchQuotes() {
     this.setState({ isLoading: true });
     let url = APIurl + APIoptions;
-    console.log(url);
     fetch(url, {
       method: "GET",
       headers: {
@@ -28,28 +36,20 @@ class App extends React.Component {
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data);
         this.setState({ quotes: data, isLoading: false });
       });
   }
 
   render() {
-    if (this.state.isLoading === false && this.state.quotes[0]) {
-      return (
-        <div>
-          <QuoteList quotes={this.state.quotes} />
-        </div>
-      );
-    } else {
-      return (
-        <div className="loading">
-          <h4>Fetching Quotes...</h4>
-          <div className="spinner-container">
-            <Spinner name="cube-grid" color="inherit" />
-          </div>
-        </div>
-      );
-    }
+    return (
+      <div>
+        <UserInput fetchQuotes={this.fetchQuotes.bind(this)} />
+        <QuoteList
+          quotes={this.state.quotes}
+          isLoading={this.state.isLoading}
+        />
+      </div>
+    );
   }
 }
 
