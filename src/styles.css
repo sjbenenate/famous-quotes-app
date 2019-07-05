@@ -1,0 +1,31 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  margin: 0;
+  padding: 0;
+}
+
+ul .quotes {
+  background-image: url("../public/img/Curly_Brackets.svg");
+}
+
+.loading {
+  color: #aaa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loading .spinner-container {
+  margin: 20px 0 0 0;
+  color: #aaa;
+}
