@@ -9,32 +9,48 @@ const APIhost = "andruxnet-random-famous-quotes.p.rapidapi.com";
 const APIkey = "7fcae583e6mshfb0a40746534038p145d17jsn4d0f57a7e898";
 const APIoptions = "?cat=famous&count=5";
 
-const useStaticData = true;
+const useStaticData = false;
 
 class App extends React.Component {
-  state = { quotes: [], isLoading: true };
-  favoriteQuotes = [];
+  state = {
+    quotes: [],
+    isLoading: true,
+    favoriteQuotes: [],
+    viewingFavorites: false
+  };
 
   loadFavoritesInMemory() {
     var savedFavorites = localStorage.getItem("savedFavoriteQuotes");
     if (savedFavorites) {
-      this.favoriteQuotes = JSON.parse(savedFavorites);
+      this.setState({ favoriteQuotes: JSON.parse(savedFavorites) });
     }
   }
 
   saveFavoritesInMemory() {
-    var favsToSave = JSON.stringify(this.favoriteQuotes);
+    var favsToSave = JSON.stringify(this.state.favoriteQuotes);
     localStorage.setItem("savedFavoriteQuotes", favsToSave);
   }
 
   addFavorite = quote => {
-    this.favoriteQuotes.splice(0, 0, quote);
-    console.log(this.favoriteQuotes);
+    var favoriteQuotes = this.state.favoriteQuotes;
+    favoriteQuotes.splice(0, 0, quote);
+    this.setState({ favoriteQuotes: favoriteQuotes });
+  };
+
+  removeFromFavorites = quoteToRemove => {
+    var quotesList = this.state.quotes;
+    var removeIndex = quotesList.findIndex(
+      quote => quote.quote === quoteToRemove.quote
+    );
+    quotesList.splice(removeIndex, 1);
+    this.setState({ quotes: quotesList });
   };
 
   showFavorites = () => {
-    console.log("loading favorites");
-    this.setState({ quotes: this.favoriteQuotes });
+    this.setState({
+      quotes: this.state.favoriteQuotes,
+      viewingFavorites: true
+    });
   };
 
   componentDidMount() {
@@ -54,7 +70,7 @@ class App extends React.Component {
   }
 
   fetchQuotes() {
-    this.setState({ isLoading: true });
+    this.setState({ isLoading: true, viewingFavorites: false });
     let url = APIurl + APIoptions;
     fetch(url, {
       method: "GET",
@@ -75,12 +91,15 @@ class App extends React.Component {
         <UserInput
           fetchQuotes={this.fetchQuotes.bind(this)}
           showFavorites={this.showFavorites}
+          numFavorites={this.state.favoriteQuotes.length}
         />
         <ErrorBoundary>
           <QuoteList
             quotes={this.state.quotes}
             isLoading={this.state.isLoading}
             addFavorite={this.addFavorite}
+            viewingFavorites={this.state.viewingFavorites}
+            removeFromFavorites={this.removeFromFavorites}
           />
         </ErrorBoundary>
       </div>

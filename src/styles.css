@@ -22,7 +22,7 @@ button {
 }
 
 button:hover {
-  background-color: #eee;
+  background-color: #ddd;
 }
 
 button:active {
@@ -97,47 +97,12 @@ button.addToFavorites:active {
   background-color: #efe;
 }
 
-.quote-phrase-0,
-.quote-phrase-1,
-.quote-phrase-2,
-.quote-phrase-3,
-.quote-phrase-4,
-.quote-phrase-5,
-.quote-phrase-6,
-.quote-phrase-7 {
+.quote-phrase {
   font-size: 2em;
   margin: 0;
   padding: 0;
 }
 
-.quote-phrase-0 {
+.quote-phrase {
   font-family: "PT Serif", serif;
-}
-
-.quote-phrase-1 {
-  font-family: "Cookie", cursive;
-}
-
-.quote-phrase-2 {
-  font-family: "Sacramento", cursive;
-}
-
-.quote-phrase-3 {
-  font-family: "Tangerine", cursive;
-}
-
-.quote-phrase-4 {
-  font-family: "Marck Script", cursive;
-}
-
-.quote-phrase-5 {
-  font-family: "Yellowtail", cursive;
-}
-
-.quote-phrase-6 {
-  font-family: "Italianno", cursive;
-}
-
-.quote-phrase-7 {
-  font-family: "Covered By Your Grace", cursive;
 }

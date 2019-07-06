@@ -11,6 +11,8 @@ class QuoteList extends React.Component {
           quote={quote}
           index={index}
           addFavorite={this.props.addFavorite}
+          viewingFavorites={this.props.viewingFavorites}
+          removeFromFavorites={this.props.removeFromFavorites}
         />
       ));
       return <ul className="quotes">{QuoteElements}</ul>;
