@@ -6,7 +6,7 @@ var UserInput = props => {
       <button className="retrieveQuotes" onClick={props.fetchQuotes}>
         Retrieve Quotes
       </button>
-      <button className="viewFavorites">
+      <button className="viewFavorites" onClick={props.showFavorites}>
         View Favorites<span> #fav</span>
       </button>
     </div>

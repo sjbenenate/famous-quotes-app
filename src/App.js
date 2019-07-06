@@ -32,6 +32,11 @@ class App extends React.Component {
     console.log(this.favoriteQuotes);
   };
 
+  showFavorites = () => {
+    console.log("loading favorites");
+    this.setState({ quotes: this.favoriteQuotes });
+  };
+
   componentDidMount() {
     // Get frech quotes on first load
     if (!useStaticData) {
@@ -67,7 +72,10 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <UserInput fetchQuotes={this.fetchQuotes.bind(this)} />
+        <UserInput
+          fetchQuotes={this.fetchQuotes.bind(this)}
+          showFavorites={this.showFavorites}
+        />
         <ErrorBoundary>
           <QuoteList
             quotes={this.state.quotes}
