@@ -9,7 +9,7 @@ const APIhost = "andruxnet-random-famous-quotes.p.rapidapi.com";
 const APIkey = "7fcae583e6mshfb0a40746534038p145d17jsn4d0f57a7e898";
 const APIoptions = "?cat=famous&count=5";
 
-const useStaticData = false;
+const useStaticData = true;
 
 class App extends React.Component {
   state = {
@@ -31,10 +31,18 @@ class App extends React.Component {
     localStorage.setItem("savedFavoriteQuotes", favsToSave);
   }
 
-  addFavorite = quote => {
+  addFavorite = quoteToAdd => {
+    const noMatchFound = -1;
     var favoriteQuotes = this.state.favoriteQuotes;
-    favoriteQuotes.splice(0, 0, quote);
+    var matchResult = favoriteQuotes.findIndex(
+      quote => quote.quote === quoteToAdd.quote
+    );
+    if (matchResult !== noMatchFound) {
+      return "Already in favorites";
+    }
+    favoriteQuotes.splice(0, 0, quoteToAdd);
     this.setState({ favoriteQuotes: favoriteQuotes });
+    return "Added!";
   };
 
   removeFromFavorites = quoteToRemove => {
