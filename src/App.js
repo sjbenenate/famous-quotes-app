@@ -9,7 +9,7 @@ const APIhost = "andruxnet-random-famous-quotes.p.rapidapi.com";
 const APIkey = "7fcae583e6mshfb0a40746534038p145d17jsn4d0f57a7e898";
 const APIoptions = "?cat=famous&count=5";
 
-const useStaticData = true;
+const useStaticData = false;
 
 class App extends React.Component {
   state = {

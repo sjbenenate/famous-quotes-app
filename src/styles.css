@@ -111,22 +111,9 @@ button.addToFavorites:active {
 /* Popup styles *******************************/
 
 .popup {
-  position: absolute;
-  right: 50px;
+  position: relative;
   padding: 10px;
   color: #fff;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.5);
-}
-
-.show-popup {
-  opacity: 1;
-  transition: all 0.5s linear;
-  transition-delay: 1s;
-  border: 5px solid red;
-}
-
-.hide-popup {
-  opacity: 0;
-  border: 10px solid purple;
 }
